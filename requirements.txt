@@ -1,0 +1,7 @@
+dash==1.9.1
+dash-table==4.6.1
+pandas==0.25.3
+numpy==1.18.1
+websocket-client==0.57.0
+requests==2.22.0
+
