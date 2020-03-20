@@ -14,4 +14,51 @@ For that purpose, we will use Fugle Realtime Websocket API and Dash. <br><br>
 pip install -r requirements.txt
 ```
 ## Usage
-**Coming Soon！**
+```py
+from fugle_realtime_websocket_api import *
+```
+### `chart_api`
+```py
+chart = chart_websocket_api(api_token = 'demo')
+```
+If you want to get your own `api_token`, please visit [Fugle Realtime API](https://developer.fugle.tw/realtime) for more information.
+Otherwise, you just can use `api_token = 'demo'` and query Symbol ID 2884 for trial.
+* #### `get_chart_data`：Get min K data from this function
+```py
+df_ohlc = chart.get_chart_data(n = 5, symbol_id = '2884')
+```
+`n` represents the time interval of the min K data. <br>
+`symbol_id` represents the stock code of the Taiwan stock market. <br>
+* #### `plot_ohlc` & `plot_volume_bar`：Plot cnadlestick chart from these functions
+```py
+chart.plot_ohlc(df = df_ohlc, rise_color = 'red', down_color = 'green')
+chart.plot_volume_bar(df = df_ohlc, rise_color = 'red', down_color = 'green')
+```
+When close price is larger than open price, `rise_color` will be in `red`. <br>
+On the other hands, when close price is less than open price, `down_color` will be in `green`.
+* #### `plot_MA`：Plot Moving Average(MA) line from this function
+```py
+chart.plot_MA(df = df_ohlc, n = 5, line_color = 'blue', line_width = 2)
+```
+`n` represents the time interval of the MA line. <br>
+### `quote_api`
+```py
+quote = quote_websocket_api(api_token = 'demo')
+```
+* #### `update_quote_data`：Update order book(最佳五檔) data from this function
+```py
+df_quote, price_list, symbol = quote.update_quote_data(symbol_id = '2884')
+```
+* #### `plot_order_book`：Plot order book as html table
+```py
+quote.plot_order_book(df_quote, price_list, symbol)
+```
+`df_quote` represents an order book that records the historical price since the execution of the code.
+`price_list` represents the current price of the order book.
+### `Dashboard Demo`
+**We use Dash to build our real-time stock quote application.** <br>
+[Dash](https://dash.plot.ly/introduction) is a productive Python framework for building web applications. <br>
+It is really suited for everyone to bulid a dashboard with highly custom user interface in Python. <br><br>
+![Demo](https://i.imgur.com/wLmSYPW.png)
+**At the end, we can see the results at `http://127.0.0.1:8050`！** <br>
+If you want to get more informations, you can check `demo.ipynb`.
