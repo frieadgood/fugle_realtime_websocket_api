@@ -7,6 +7,7 @@ For that purpose, we will use Fugle Realtime Websocket API and Dash. <br><br>
 * [GitHub](https://github.com/) <br><br>
   * https://github.com/fortuna-intelligence/fugle-realtime-py <br><br>
 * [Dash](https://plot.ly/dash)
+* [Simple Websocket Demo](https://gist.github.com/frieadgood/e6c56184fff7d19d8874b6ded6019f4e)
 ## Environment
 * Python 3.6.9
 ## Installation
